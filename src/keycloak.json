@@ -1,0 +1,5 @@
+{
+  "realm": "pigeonSecurity",
+  "url": "http://keycloak-container:8080",
+  "clientId": "spring-boot-app"
+}
