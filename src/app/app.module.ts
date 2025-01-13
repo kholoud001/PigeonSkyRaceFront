@@ -8,7 +8,9 @@ import { HttpTokenInterceptor } from './services/interceptor/http-token.intercep
 import { KeycloakService } from './services/keycloak/keycloak.service';
 
 export function kcFactory(kcService: KeycloakService) {
-  return () => kcService.init();
+  return () => kcService.init().catch(error => {
+    console.error('Keycloak init failed', error);
+  });
 }
 
 @NgModule({
@@ -22,14 +24,14 @@ export function kcFactory(kcService: KeycloakService) {
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpTokenInterceptor,
-      multi: true
+      provide: APP_INITIALIZER,
+      useFactory: kcFactory,
+      multi: true,
+      deps: [KeycloakService]
     },
     {
-      provide: APP_INITIALIZER,
-      deps: [KeycloakService],
-      useFactory: kcFactory,
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptor,
       multi: true
     }
   ],
