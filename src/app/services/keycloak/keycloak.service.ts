@@ -76,4 +76,20 @@ export class KeycloakService {
     localStorage.setItem('refreshToken', this.keycloakInstance.refreshToken || '');
     console.log('Token stored:', this.keycloakInstance.token);
   }
+
+  isAuthenticated(): boolean {
+    return !!this.keycloakInstance.token;
+  }
+
+  hasRole(role: string): boolean {
+    const tokenParsed = this.keycloakInstance.tokenParsed;
+    if (tokenParsed && tokenParsed.realm_access) {
+      return tokenParsed.realm_access.roles.includes(role);
+    }
+    return false;
+  }
+
+
+
+
 }

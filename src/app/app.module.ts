@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpTokenInterceptor } from './services/interceptor/http-token.interceptor';
 import { KeycloakService } from './services/keycloak/keycloak.service';
+import { UnauthorizedComponent } from './modules/unauthorized/unauthorized.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 export function kcFactory(kcService: KeycloakService) {
   return () => kcService.init().catch(error => {
@@ -15,12 +18,15 @@ export function kcFactory(kcService: KeycloakService) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UnauthorizedComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NavbarComponent
   ],
   providers: [
     {
