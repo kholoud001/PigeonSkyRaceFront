@@ -10,6 +10,12 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [RoleGuard],
     data: { roles: ['ROLE_ADMIN'] }
+  },
+  {
+    path: 'manage',
+    component: AdminComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['ROLE_ADMIN'] }
   }
 ];
 @NgModule({
