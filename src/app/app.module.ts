@@ -9,6 +9,7 @@ import { KeycloakService } from './services/keycloak/keycloak.service';
 import { UnauthorizedComponent } from './modules/unauthorized/unauthorized.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import {RouterModule} from '@angular/router';
 
 export function kcFactory(kcService: KeycloakService) {
   return () => kcService.init().catch(error => {
@@ -26,7 +27,8 @@ export function kcFactory(kcService: KeycloakService) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NavbarComponent
+    NavbarComponent,
+    RouterModule
   ],
   providers: [
     {

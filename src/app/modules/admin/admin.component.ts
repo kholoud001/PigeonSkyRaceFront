@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
 
   fetchAdminData(): void {
     this.isLoading = true;
-    this.errorMessage = ''; // Reset error message
+    this.errorMessage = '';
 
     this.apiService.getAdminData().subscribe(
       (data) => {

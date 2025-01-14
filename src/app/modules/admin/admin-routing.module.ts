@@ -5,12 +5,7 @@ import {AdminComponent} from './admin.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AdminComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['ROLE_ADMIN'] }
-  },
+
   {
     path: 'manage',
     component: AdminComponent,
