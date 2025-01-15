@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {KeycloakService} from '../../keycloak/keycloak.service';
 
 export interface UserDisplayDTO {
+  id:number;
   username: string;
   roleType: string;
   colombierName: string;
@@ -57,8 +58,8 @@ export class AdminApiService {
     });
   }
 
-  deleteUser(userId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/admin/deleteUser/${userId}`, {
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/admin/deleteUser/${id}`, {
       headers: this.getHeaders(),
       responseType: 'text'
     });
