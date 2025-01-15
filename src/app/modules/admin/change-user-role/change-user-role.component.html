@@ -1,0 +1,32 @@
+<div class="change-role-container">
+  <h2>Change User Role</h2>
+
+  <!-- Search and Select Users -->
+  <div>
+    <label for="searchTerm">Search User:</label>
+    <input
+      type="text"
+      id="searchTerm"
+      [(ngModel)]="username"
+      (input)="onSearchUsers()"
+      placeholder="Search by username"
+      list="userList"
+    />
+    <datalist id="userList">
+      <option *ngFor="let user of users" [value]="user.username"></option>
+    </datalist>
+  </div>
+
+  <!-- Role Change Form -->
+  <form (submit)="onChangeRole()">
+    <div>
+      <label for="newRole">Select Role:</label>
+      <select id="newRole" [(ngModel)]="newRole" name="newRole" required>
+        <option value="ROLE_USER">User</option>
+        <option value="ROLE_ADMIN">Admin</option>
+        <option value="ROLE_ORGANIZER">Organizer</option>
+      </select>
+    </div>
+    <button type="submit">Change Role</button>
+  </form>
+</div>

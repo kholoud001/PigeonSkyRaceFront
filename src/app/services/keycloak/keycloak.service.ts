@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import Keycloak from 'keycloak-js';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class KeycloakService {
   private keycloakInstance: Keycloak;
 
-  constructor() {
+  constructor(private router: Router) {
     this.keycloakInstance = new Keycloak({
       url: 'http://localhost:8080',
       realm: 'pigeonSecurity',
@@ -25,6 +26,7 @@ export class KeycloakService {
       if (authenticated) {
         console.log('User is authenticated');
         this.storeToken();
+        // this.redirectUserBasedOnRole();
       } else {
         console.warn('User is not authenticated');
       }
@@ -38,7 +40,7 @@ export class KeycloakService {
 
   login(): Promise<void> {
     return this.keycloakInstance.login({
-      redirectUri: window.location.origin
+      redirectUri: window.location.origin,
     });
   }
 
@@ -46,14 +48,14 @@ export class KeycloakService {
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     return this.keycloakInstance.logout({
-      redirectUri: window.location.origin
+      redirectUri: window.location.origin,
     });
   }
 
   refreshToken(): Promise<void> {
     return this.keycloakInstance.updateToken(70).then(() => {
       this.storeToken();
-    }).catch(err => {
+    }).catch((err) => {
       console.error('Token refresh failed:', err);
       this.logout();
     });
@@ -71,12 +73,6 @@ export class KeycloakService {
     return this.keycloakInstance.loadUserProfile();
   }
 
-  private storeToken(): void {
-    localStorage.setItem('token', this.keycloakInstance.token || '');
-    localStorage.setItem('refreshToken', this.keycloakInstance.refreshToken || '');
-    console.log('Token stored:', this.keycloakInstance.token);
-  }
-
   isAuthenticated(): boolean {
     return !!this.keycloakInstance.token;
   }
@@ -89,6 +85,33 @@ export class KeycloakService {
     return false;
   }
 
+  private storeToken(): void {
+    localStorage.setItem('token', this.keycloakInstance.token || '');
+    localStorage.setItem('refreshToken', this.keycloakInstance.refreshToken || '');
+    console.log('Token stored:', this.keycloakInstance.token);
+  }
+
+  getUserRoles(): string[] {
+    const keycloakInstance = this.keycloakInstance;
+    return keycloakInstance && keycloakInstance.realmAccess
+      ? keycloakInstance.realmAccess.roles
+      : [];
+  }
+
+  // private redirectUserBasedOnRole(): void {
+  //   const tokenParsed = this.keycloakInstance.tokenParsed;
+  //   const roles = tokenParsed?.realm_access?.roles || [];
+  //
+  //   if (roles.includes('ROLE_ADMIN')) {
+  //     this.router.navigate(['/admin']);
+  //   } else if (roles.includes('ROLE_USER')) {
+  //     this.router.navigate(['/user']);
+  //   } else if (roles.includes('ROLE_ORGANIZER')) {
+  //     this.router.navigate(['/organizer']);
+  //   } else {
+  //     this.router.navigate(['/unauthorized']);
+  //   }
+  // }
 
 
 

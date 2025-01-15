@@ -21,6 +21,7 @@ export class RoleGuard implements CanActivate {
 
     if (this.keycloakService.isAuthenticated() && this.hasRequiredRole(requiredRoles)) {
       return true;
+
     }
 
     this.router.navigate(['/unauthorized']);

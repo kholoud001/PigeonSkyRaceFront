@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from '../../services/api/api.service';
+import {AdminApiService} from '../../services/api/admin/admin-api.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,12 +9,12 @@ import {ApiService} from '../../services/api/api.service';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
+
   adminData: any;
   isLoading: boolean = false;
   errorMessage: string = '';
 
-
-  constructor(private apiService: ApiService) {}
+  constructor(private adminApiService: AdminApiService) {}
 
   ngOnInit(): void {
     this.fetchAdminData();
@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.apiService.getAdminData().subscribe(
+    this.adminApiService.getAdminData().subscribe(
       (data) => {
         try {
           this.adminData = JSON.parse(data);
@@ -41,6 +41,8 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+
+
 
 
 

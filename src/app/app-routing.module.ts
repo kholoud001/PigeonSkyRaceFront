@@ -4,9 +4,10 @@ import {UnauthorizedComponent} from './modules/unauthorized/unauthorized.compone
 import {RoleGuard} from './services/guards/role.guard';
 
 const routes: Routes = [
+
   {
     path: 'admin',
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    loadChildren: () => import('./modules/admin/welcome/admin.module').then(m => m.AdminModule),
     canActivate: [RoleGuard],
     data: { roles: ['ROLE_ADMIN'] }
   },

@@ -1,18 +1,22 @@
 <nav>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
+  <ul class="nav-list">
+    <li><a routerLink="/">Home</a></li>
 
-    <li *ngIf="!isAuthenticated()">
-      <button (click)="login()">Login</button>
+
+
+    <li *ngIf="isAuthenticated() && isAdmin()">
+      <button class="nav-button" (click)="changeRole()">Change roles</button>
+    </li>
+    <li *ngIf="isAuthenticated() && isAdmin()">
+      <button class="nav-button" (click)="manageUsers()">Manage Users</button>
     </li>
 
-<!--    <li *ngIf="!isAuthenticated()">-->
-<!--      <button (click)="register()">Register</button>-->
-<!--    </li>-->
+    <li *ngIf="!isAuthenticated()">
+      <button class="nav-button" (click)="login()">Login</button>
+    </li>
 
     <li *ngIf="isAuthenticated()">
-      <button (click)="logout()">Logout</button>
+      <button class="nav-button" (click)="logout()">Logout</button>
     </li>
   </ul>
 </nav>
