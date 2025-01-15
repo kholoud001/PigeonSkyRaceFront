@@ -1,0 +1,5 @@
+<div *ngIf="isLoading">Loading admin data...</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+<div *ngIf="!isLoading && adminData" class="admin-message">
+  <p>{{ adminData }}</p>
+</div>
