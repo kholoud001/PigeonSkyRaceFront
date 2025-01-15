@@ -1,7 +1,7 @@
-// src/app/navbar/navbar.component.ts
 import { Component } from '@angular/core';
 import { KeycloakService } from '../../services/keycloak/keycloak.service';
 import {CommonModule} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +11,7 @@ import {CommonModule} from '@angular/common';
   imports: [CommonModule]
 })
 export class NavbarComponent {
-  constructor(private keycloakService: KeycloakService) {}
+  constructor(private keycloakService: KeycloakService, private router: Router) {}
 
   isAuthenticated(): boolean {
     return this.keycloakService.isAuthenticated();
@@ -23,5 +23,20 @@ export class NavbarComponent {
 
   logout() {
     this.keycloakService.logout();
+  }
+
+
+  isAdmin(): boolean {
+    const userRoles = this.keycloakService.getUserRoles();
+    return userRoles.includes('ROLE_ADMIN');
+  }
+
+  changeRole() {
+    this.router.navigate(['/admin/change-user-role']);
+  }
+
+  manageUsers() {
+    this.router.navigate(['/admin/all-users']);
+
   }
 }

@@ -26,7 +26,7 @@ export class KeycloakService {
       if (authenticated) {
         console.log('User is authenticated');
         this.storeToken();
-        this.redirectUserBasedOnRole();
+        // this.redirectUserBasedOnRole();
       } else {
         console.warn('User is not authenticated');
       }
@@ -91,18 +91,28 @@ export class KeycloakService {
     console.log('Token stored:', this.keycloakInstance.token);
   }
 
-  private redirectUserBasedOnRole(): void {
-    const tokenParsed = this.keycloakInstance.tokenParsed;
-    const roles = tokenParsed?.realm_access?.roles || [];
-
-    if (roles.includes('ROLE_ADMIN')) {
-      this.router.navigate(['/admin']);
-    } else if (roles.includes('ROLE_USER')) {
-      this.router.navigate(['/user']);
-    } else if (roles.includes('ROLE_ORGANIZER')) {
-      this.router.navigate(['/organizer']);
-    } else {
-      this.router.navigate(['/unauthorized']);
-    }
+  getUserRoles(): string[] {
+    const keycloakInstance = this.keycloakInstance;
+    return keycloakInstance && keycloakInstance.realmAccess
+      ? keycloakInstance.realmAccess.roles
+      : [];
   }
+
+  // private redirectUserBasedOnRole(): void {
+  //   const tokenParsed = this.keycloakInstance.tokenParsed;
+  //   const roles = tokenParsed?.realm_access?.roles || [];
+  //
+  //   if (roles.includes('ROLE_ADMIN')) {
+  //     this.router.navigate(['/admin']);
+  //   } else if (roles.includes('ROLE_USER')) {
+  //     this.router.navigate(['/user']);
+  //   } else if (roles.includes('ROLE_ORGANIZER')) {
+  //     this.router.navigate(['/organizer']);
+  //   } else {
+  //     this.router.navigate(['/unauthorized']);
+  //   }
+  // }
+
+
+
 }

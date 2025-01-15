@@ -1,29 +1,65 @@
-/* src/app/navbar/navbar.component.css */
+/* Navbar container */
 nav {
-  background-color: #333;
-  color: white;
-  padding: 10px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar list */
+.nav-list {
   display: flex;
   justify-content: space-between;
-}
-
-ul {
+  align-items: center;
   list-style-type: none;
-  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
-li {
-  margin: 0 15px;
+/* Navbar items */
+.nav-list li {
+  margin: 0 10px;
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
+/* Links */
+.nav-list a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Button style for Login/Logout */
+.nav-button {
+  background-color: #007bff;
+  color: #ffffff;
   border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
-  background-color: #45a049;
+.nav-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Hover effects for links */
+.nav-list a:hover {
+  color: #007bff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-list li {
+    margin: 5px 0;
+  }
 }

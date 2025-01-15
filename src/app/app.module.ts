@@ -10,6 +10,10 @@ import { UnauthorizedComponent } from './modules/unauthorized/unauthorized.compo
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import {RouterModule} from '@angular/router';
+import {AdminComponent} from './modules/admin/welcome/admin.component';
+import {ChangeUserRoleComponent} from './modules/admin/change-user-role/change-user-role.component';
+import {FormsModule} from "@angular/forms";
+import { ManageUsersComponent } from './modules/admin/manage-users/manage-users.component';
 
 export function kcFactory(kcService: KeycloakService) {
   return () => kcService.init().catch(error => {
@@ -21,15 +25,18 @@ export function kcFactory(kcService: KeycloakService) {
   declarations: [
     AppComponent,
     UnauthorizedComponent,
-    FooterComponent
+    FooterComponent,
+    ChangeUserRoleComponent,
+    ManageUsersComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NavbarComponent,
-    RouterModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NavbarComponent,
+        RouterModule,
+        FormsModule
+    ],
   providers: [
     {
       provide: APP_INITIALIZER,
