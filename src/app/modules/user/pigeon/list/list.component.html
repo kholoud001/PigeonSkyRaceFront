@@ -1,0 +1,59 @@
+<div class="container mx-auto px-4">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Pigeon List</h2>
+
+  <div class="mb-10 ">
+    <button
+      (click)="addPigeon()"
+      class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300"
+    >
+      Add Pigeon
+    </button>
+  </div>
+
+  <div *ngIf="pigeons && pigeons.length; else noPigeons">
+    <table class="w-full border border-gray-200 shadow-lg rounded-lg overflow-hidden">
+      <thead class="bg-blue-500 text-white">
+      <tr>
+        <th class="py-3 px-6 text-left">Ring Number</th>
+        <th class="py-3 px-6 text-left">Color</th>
+        <th class="py-3 px-6 text-left">Age</th>
+        <th class="py-3 px-6 text-center">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let pigeon of pigeons"
+        class="border-b hover:bg-gray-100 transition duration-300"
+      >
+        <td class="py-4 px-6 text-gray-800">{{ pigeon.ringNumber }}</td>
+        <td class="py-4 px-6 text-gray-800">{{ pigeon.color }}</td>
+        <td class="py-4 px-6 text-gray-800">{{ pigeon.age }}</td>
+        <td class="py-4 px-6 text-center">
+          <button
+            (click)="viewDetails(pigeon.id)"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+          >
+            View Details
+          </button>
+          <button
+            (click)="updatePigeon(pigeon.id)"
+            class="bg-yellow-500 text-white px-4 py-2 rounded mx-2 hover:bg-yellow-600 transition duration-300"
+          >
+            Update
+          </button>
+          <button
+            (click)="deletePigeon(pigeon.id)"
+            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noPigeons>
+    <p class="text-gray-600 text-center mt-8">No pigeons found.</p>
+  </ng-template>
+</div>

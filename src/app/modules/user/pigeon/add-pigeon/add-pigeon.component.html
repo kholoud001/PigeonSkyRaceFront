@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="title">Add New Pigeon</h2>
+
+  <div class="card">
+    <label for="ringNumber">Pigeon Ring Number:</label>
+    <input id="ringNumber" type="text" [(ngModel)]="pigeon.ringNumber" class="input-field" placeholder="Enter pigeon ringNumber" required>
+
+    <label for="age">Age:</label>
+    <input id="age" type="number" [(ngModel)]="pigeon.age" class="input-field" placeholder="Enter age" required>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" [(ngModel)]="pigeon.gender" name="gender" required>
+      <option value="MALE">Male</option>
+      <option value="FEMALE">Female</option>
+    </select>
+
+    <label for="color">Color:</label>
+    <input id="color" type="text" [(ngModel)]="pigeon.color" class="input-field" placeholder="Enter color" required>
+
+    <div class="button-group">
+      <button (click)="addPigeon()" class="submit-button">Add Pigeon</button>
+      <button (click)="goBack()" class="back-button">Back to List</button>
+    </div>
+  </div>
+</div>
