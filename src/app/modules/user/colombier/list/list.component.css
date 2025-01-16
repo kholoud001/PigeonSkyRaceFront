@@ -1,0 +1,27 @@
+.container {
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #f9fafb;
+  text-align: left;
+}
+
+td, th {
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+button {
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2563eb;
+}

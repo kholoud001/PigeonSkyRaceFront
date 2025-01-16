@@ -1,0 +1,39 @@
+<!--<div class="container mx-auto px-4">-->
+<!--  <h2 class="text-2xl font-bold mb-4">Colombier List</h2>-->
+
+<!--  &lt;!&ndash; Table of Colombiers &ndash;&gt;-->
+<!--  <div *ngIf="colombiers && colombiers.length; else noColombiers">-->
+<!--    <table class="min-w-full table-auto border-collapse border border-gray-300">-->
+<!--      <thead>-->
+<!--      <tr class="bg-gray-200">-->
+<!--        <th class="border border-gray-300 px-4 py-2">Name</th>-->
+<!--        <th class="border border-gray-300 px-4 py-2">Location</th>-->
+<!--        <th class="border border-gray-300 px-4 py-2">Latitude</th>-->
+<!--        <th class="border border-gray-300 px-4 py-2">Longitude</th>-->
+<!--        <th class="border border-gray-300 px-4 py-2">Actions</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let colombier of colombiers" class="hover:bg-gray-100">-->
+<!--        <td class="border border-gray-300 px-4 py-2">{{ colombier.name }}</td>-->
+<!--        <td class="border border-gray-300 px-4 py-2">{{ colombier.location }}</td>-->
+<!--        <td class="border border-gray-300 px-4 py-2">{{ colombier.latitude }}</td>-->
+<!--        <td class="border border-gray-300 px-4 py-2">{{ colombier.longitude }}</td>-->
+<!--        <td class="border border-gray-300 px-4 py-2 text-center">-->
+<!--          <button-->
+<!--            (click)="viewDetails(colombier.id)"-->
+<!--            class="bg-blue-500 text-white px-3 py-1 rounded mr-2"-->
+<!--          >-->
+<!--            View Details-->
+<!--          </button>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; No Colombiers Message &ndash;&gt;-->
+<!--  <ng-template #noColombiers>-->
+<!--    <p class="text-gray-600">No colombiers found.</p>-->
+<!--  </ng-template>-->
+<!--</div>-->

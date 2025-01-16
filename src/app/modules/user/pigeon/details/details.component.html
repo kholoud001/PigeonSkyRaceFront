@@ -1,0 +1,21 @@
+<div class="container">
+  <h2 class="title">Pigeon Details</h2>
+
+  <div *ngIf="pigeon; else loading" class="card">
+    <h3 class="pigeon-name">{{ pigeon.ringNumber }}</h3>
+    <p class="pigeon-info">Age: {{ pigeon.age }} years</p>
+    <p class="pigeon-info">Color: {{ pigeon.color }}</p>
+
+    <button (click)="goBack()" class="back-button">
+      Back to List
+    </button>
+  </div>
+
+  <ng-template #loading>
+    <p class="loading">Loading pigeon details...</p>
+  </ng-template>
+
+  <ng-template #noDescription>
+    <span class="no-description">No description available.</span>
+  </ng-template>
+</div>

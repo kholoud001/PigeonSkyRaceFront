@@ -3,13 +3,21 @@
     <li><a routerLink="/">Home</a></li>
 
 
-
     <li *ngIf="isAuthenticated() && isAdmin()">
       <button class="nav-button" (click)="changeRole()">Change roles</button>
     </li>
     <li *ngIf="isAuthenticated() && isAdmin()">
       <button class="nav-button" (click)="manageUsers()">Manage Users</button>
     </li>
+
+    <li *ngIf="isAuthenticated() && isBreeder()">
+      <button class="nav-button" (click)="pigeonsList()">Manage Pigeons</button>
+    </li>
+    <li *ngIf="isAuthenticated() && isBreeder()">
+      <button class="nav-button" (click)="loftsList()">Manage Lofts</button>
+    </li>
+
+
 
     <li *ngIf="!isAuthenticated()">
       <button class="nav-button" (click)="login()">Login</button>

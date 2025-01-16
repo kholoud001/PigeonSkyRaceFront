@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import Keycloak from 'keycloak-js';
 
 @Injectable({
@@ -8,7 +9,9 @@ import Keycloak from 'keycloak-js';
 export class KeycloakService {
   private keycloakInstance: Keycloak;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private http: HttpClient
+  ) {
     this.keycloakInstance = new Keycloak({
       url: 'http://localhost:8080',
       realm: 'pigeonSecurity',
@@ -53,7 +56,7 @@ export class KeycloakService {
   }
 
   refreshToken(): Promise<void> {
-    return this.keycloakInstance.updateToken(70).then(() => {
+    return this.keycloakInstance.updateToken(60).then(() => {
       this.storeToken();
     }).catch((err) => {
       console.error('Token refresh failed:', err);
@@ -72,6 +75,19 @@ export class KeycloakService {
   getProfile(): Promise<any> {
     return this.keycloakInstance.loadUserProfile();
   }
+
+
+  fetchUserInfo(): Promise<any> {
+    const token = this.keycloakInstance.token || '';
+    const userInfoEndpoint = 'http://localhost:8080/realms/pigeonSecurity/protocol/openid-connect/userinfo';
+
+    return this.http
+      .get(userInfoEndpoint, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .toPromise();
+  }
+
 
   isAuthenticated(): boolean {
     return !!this.keycloakInstance.token;

@@ -1,0 +1,102 @@
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Card */
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form elements */
+label {
+  display: block;
+  font-weight: 600;
+  margin: 10px 0 5px;
+  color: #555;
+}
+
+.input-field,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.input-field:focus,
+select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-button,
+.back-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.back-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+}
+
+.back-button:hover {
+  background-color: #e53935;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .submit-button,
+  .back-button {
+    width: 100%;
+  }
+}

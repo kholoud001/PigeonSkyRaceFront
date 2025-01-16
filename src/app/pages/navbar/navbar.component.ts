@@ -31,12 +31,27 @@ export class NavbarComponent {
     return userRoles.includes('ROLE_ADMIN');
   }
 
+  isBreeder() {
+    const userRoles = this.keycloakService.getUserRoles();
+    return userRoles.includes('ROLE_USER');
+  }
+
   changeRole() {
     this.router.navigate(['/admin/change-user-role']);
   }
 
   manageUsers() {
     this.router.navigate(['/admin/all-users']);
+
+  }
+
+  pigeonsList() {
+    this.router.navigate(['/user/pigeons']);
+
+  }
+
+  loftsList() {
+    this.router.navigate(['/user/lofts']);
 
   }
 }
