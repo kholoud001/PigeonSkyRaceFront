@@ -1,4 +1,8 @@
 <div class="admin-panel">
-  <h1>Welcome to the Admin Panel!</h1>
-  <p>Manage your users, roles, and settings easily from here.</p>
+
+  <button (click)="changeLanguage('en')">English</button>
+  <button (click)="changeLanguage('fr')">Français</button>
+
+  <h1>{{ 'ADMIN_PANEL.WELCOME' | translate }}</h1>
+  <p>{{ 'ADMIN_PANEL.MANAGE' | translate }}</p>
 </div>

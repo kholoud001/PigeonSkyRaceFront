@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {KeycloakService} from './services/keycloak/keycloak.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,10 @@ export class AppComponent {
   title = 'pigeon';
 
 
+  constructor(private translate: TranslateService) {}
+
+  changeLanguage(event: any): void {
+    const language = event.target.value;
+    this.translate.use(language);
+  }
 }
