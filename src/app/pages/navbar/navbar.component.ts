@@ -36,6 +36,11 @@ export class NavbarComponent {
     return userRoles.includes('ROLE_USER');
   }
 
+  isOrganizer() {
+    const userRoles=this.keycloakService.getUserRoles();
+    return userRoles.includes('ROLE_ORGANIZER');
+  }
+
   changeRole() {
     this.router.navigate(['/admin/change-user-role']);
   }
@@ -52,6 +57,15 @@ export class NavbarComponent {
 
   loftsList() {
     this.router.navigate(['/user/lofts']);
+
+  }
+
+  competitonsList() {
+    this.router.navigate(['/organizer/competitions']);
+
+  }
+
+  resutls() {
 
   }
 }

@@ -1,0 +1,89 @@
+<div class="container">
+  <h1 class="title">Add New Competition</h1>
+  <form (ngSubmit)="onSubmit()" class="competition-form">
+    <div class="form-group">
+      <label for="name">Competition Name</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="competition.name"
+        name="name"
+        placeholder="Enter competition name"
+        required
+      />
+    </div>
+
+<!--    <div class="form-group">-->
+<!--      <label for="latitude">Latitude</label>-->
+<!--      <input-->
+<!--        type="number"-->
+<!--        id="latitude"-->
+<!--        [(ngModel)]="competition.latitude"-->
+<!--        name="latitude"-->
+<!--        placeholder="Enter latitude (-90 to 90)"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="longitude">Longitude</label>-->
+<!--      <input-->
+<!--        type="number"-->
+<!--        id="longitude"-->
+<!--        [(ngModel)]="competition.longitude"-->
+<!--        name="longitude"-->
+<!--        placeholder="Enter longitude (-180 to 180)"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+    <div class="form-group">
+      <label for="departureTime">Departure Time</label>
+      <input
+        type="datetime-local"
+        id="departureTime"
+        [(ngModel)]="competition.departureTime"
+        name="departureTime"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="pigeonCount">Pigeon Count</label>
+      <input
+        type="number"
+        id="pigeonCount"
+        [(ngModel)]="competition.pigeonCount"
+        name="pigeonCount"
+        placeholder="Enter pigeon count"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="percentage">Percentage</label>
+      <input
+        type="number"
+        id="percentage"
+        [(ngModel)]="competition.percentage"
+        name="percentage"
+        placeholder="Enter percentage (0-100)"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="releasePlace">Release Place</label>
+      <input
+        type="text"
+        id="releasePlace"
+        [(ngModel)]="competition.releasePlace"
+        name="releasePlace"
+        placeholder="Enter release place"
+        required
+      />
+    </div>
+
+    <button type="submit" class="submit-btn">Add Competition</button>
+  </form>
+</div>

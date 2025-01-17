@@ -17,6 +17,13 @@
       <button class="nav-button" (click)="loftsList()">Manage Lofts</button>
     </li>
 
+    <li *ngIf="isAuthenticated() && isOrganizer()">
+      <button class="nav-button" (click)="competitonsList()">Manage Competitions</button>
+    </li>
+    <li *ngIf="isAuthenticated() && isOrganizer()">
+      <button class="nav-button" (click)="resutls()">Manage Results</button>
+    </li>
+
 
 
     <li *ngIf="!isAuthenticated()">
